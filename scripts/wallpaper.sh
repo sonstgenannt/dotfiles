@@ -5,7 +5,7 @@
 # Wallpaper directory
 WALLPAPER_DIRECTORY="$HOME/Pictures/Wallpapers"
 
-mapfile -t MONITORS < <(hyprctl -j monitors | jq -r '.[].name')
+mapfile -t MONITORS < <(hyprctl monitors | grep "Monitor" | awk '{print $2}')
 LENGTH=$(hyprctl monitors | grep -c 'Monitor')
 
 # Select random wallpapers that aren't the null.jpg from the directory
