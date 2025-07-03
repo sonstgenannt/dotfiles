@@ -14,10 +14,5 @@ mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIRECTORY" -type f ! -name "null.jpg"
 for i in "${!MONITORS[@]}"; do
    echo $i
    echo ${WALLPAPERS[i]}, ${MONITORS[i]}
-   hyprctl hyprpaper preload "${WALLPAPERS[i]}"
-   echo "PRELOADED"
-   hyprctl hyprpaper wallpaper "${MONITORS[i]}, ${WALLPAPERS[i]}"
+   hyprctl hyprpaper reload "${MONITORS[i]}, ${WALLPAPERS[i]}"
 done
-
-#Unload unused images to free memory
-hyprctl hyprpaper unload unused
